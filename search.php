@@ -1,7 +1,8 @@
 <?php
 include("connection.php");
 
-$query = mysqli_query($connection, "SELECT * FROM pegawai");
+$keyword=$_GET["keyword"];
+$query = mysqli_query($connection, "SELECT * FROM pegawai WHERE nama LIKE '%$keyword%' ");
 $result = mysqli_fetch_all($query,MYSQLI_ASSOC);
 
 
@@ -9,14 +10,15 @@ $result = mysqli_fetch_all($query,MYSQLI_ASSOC);
 
 <html>
     <body>
-        <h1>Data Pegawai</h1>
+        <h1>Search Data Pegawai</h1>
         
         <form method="GET" action="search.php">
-            <input type="text" name="keyword" placeholder = "Ketikan Pencarian Nama..." />
+            <input type="text" name="keyword" placeholder = "Ketikan Pencarian..." />
             <button type="submit">Cari</button>
         </form>
 
-        <a href="form-insert.php">Tambah Data</a>
+        <a href="form-insert.php">Tambah Data</a> |
+        <a href="list.php">Kembali</a>
         <br><br>
         <table border="1">
             <thead>
