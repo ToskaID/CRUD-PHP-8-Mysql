@@ -10,6 +10,8 @@ $result = mysqli_fetch_all($query,MYSQLI_ASSOC);
 <html>
     <body>
         <h1>Data Pegawai</h1>
+        <a href="form-insert.php">Tambah Data</a>
+        <br><br>
         <table border="1">
             <thead>
                 <tr>
@@ -17,14 +19,16 @@ $result = mysqli_fetch_all($query,MYSQLI_ASSOC);
                     <th>Nama</th>
                     <th>Jenis Kelamin</th>
                     <th>Alamat</th>
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <?php foreach($result as $index => $pegawai) : ?>
                 <tr>
-                    <td><?php echo $index+ 1?></td>
-                    <td><?php echo $pegawai["nama"]?></td>
+                    <td><?= $index+ 1?></td>
+                    <td><a href="profile.php?id=<?=$pegawai["id"]?>"><?=$pegawai["nama"]?></a></td>
                     <td><?php echo $pegawai["jenis_kelamin"]?></td>
                     <td><?php echo $pegawai["alamat"] ?></td>
+                    <td><a href="form-edit.php?id=<?=$pegawai["id"]?>">Edit</a></td>
                 </tr>
             <?php endforeach ?>
         </table>
