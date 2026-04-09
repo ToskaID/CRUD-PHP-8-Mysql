@@ -28,7 +28,10 @@ $result = mysqli_fetch_all($query,MYSQLI_ASSOC);
                     <td><a href="profile.php?id=<?=$pegawai["id"]?>"><?=$pegawai["nama"]?></a></td>
                     <td><?php echo $pegawai["jenis_kelamin"]?></td>
                     <td><?php echo $pegawai["alamat"] ?></td>
-                    <td><a href="form-edit.php?id=<?=$pegawai["id"]?>">Edit</a></td>
+                    <td>
+                        <a href="form-edit.php?id=<?=$pegawai["id"]?>">Edit</a> | 
+                        <a href="delete.php?id=<?=$pegawai["id"]?>">Delete</a>
+                    </td>
                 </tr>
             <?php endforeach ?>
         </table>
